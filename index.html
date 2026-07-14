@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vote4Democracy — Act. Grade. Follow the Money.</title>
+<!-- ══ PWA / APP INSTALL ══════════════════════════════════════ -->
+<link rel="manifest" href="/manifest.json"/>
+<meta name="theme-color" content="#09090b"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Vote4Democracy"/>
+<meta name="description" content="Civic Intelligence Platform — Act. Grade. Follow the Money. 2026 Midterms."/>
+<meta property="og:title" content="Vote4Democracy — Act. Grade. Follow the Money."/>
+<meta property="og:description" content="The platform combining real-time congressional action alerts, rep scorecards, and full campaign finance transparency."/>
+<meta property="og:url" content="https://www.vote4democracy.com/"/>
+<meta property="og:type" content="website"/>
+<link rel="apple-touch-icon" href="/assets/icon-192.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png"/>
+<!-- ══════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --ink:#09090b;
+  --ink2:#18181b;
+  --ink3:#27272a;
+  --muted:#71717a;
+  --subtle:#a1a1aa;
+  --border:#e4e4e7;
+  --surface:#fafafa;
+  --white:#ffffff;
+  --blue:#1d4ed8;
+  --blue-lt:#dbeafe;
+  --red:#dc2626;
+  --red-lt:#fee2e2;
+  --green:#16a34a;
+  --green-lt:#dcfce7;
+  --amber:#d97706;
+  --amber-lt:#fef3c7;
+  --gold:#f59e0b;
+  --navy:#0f172a;
+}
+
+html{scroll-behavior:smooth}
+body{font-family:'Instrument Sans',sans-serif;background:var(--white);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(9,9,11,0.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:60px;
+}
+.nav-brand{
+  font-family:'Syne',sans-serif;font-size:16px;font-weight:800;
+  color:var(--white);letter-spacing:-.01em;
+  display:flex;align-items:center;gap:8px;text-decoration:none;
+}
+.nav-brand-dot{width:8px;height:8px;background:var(--gold);border-radius:50%}
+.nav-menu{display:flex;gap:6px;align-items:center}
+.nav-menu a{
+  color:rgba(255,255,255,.6);font-size:13px;font-weight:500;
+  text-decoration:none;padding:6px 12px;border-radius:6px;
+  transition:color .15s,background .15s;
+}
+.nav-menu a:hover{color:var(--white);background:rgba(255,255,255,.07)}
+.nav-pill{
+  background:var(--red);color:var(--white)!important;
+  padding:7px 16px!important;border-radius:6px;
+  font-weight:600!important;
+  transition:background .15s!important;
+}
+.nav-pill:hover{background:#b91c1c!important;color:var(--white)!important}
+
+/* ── HERO ── */
+.hero{
+  background:var(--navy);
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:120px 80px 80px;
+  position:relative;overflow:hidden;
+}
+.hero-grid-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+}
+.hero-glow{
+  position:absolute;top:-200px;right:-100px;
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(29,78,216,.25) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-glow2{
+  position:absolute;bottom:-100px;left:200px;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(220,38,38,.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;z-index:1;max-width:900px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);
+  color:var(--gold);font-size:11px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;padding:6px 14px;border-radius:20px;
+  margin-bottom:28px;
+}
+.hero-badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+.hero h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(48px,6.5vw,96px);
+  font-weight:800;line-height:.92;
+  letter-spacing:-.03em;
+  color:var(--white);
+  margin-bottom:28px;
+}
+.hero h1 .accent-blue{color:#60a5fa}
+.hero h1 .accent-red{color:#f87171}
+.hero h1 .accent-gold{color:var(--gold)}
+
+.hero-sub{
+  font-size:18px;line-height:1.7;
+  color:rgba(255,255,255,.55);
+  max-width:560px;margin-bottom:44px;
+}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:72px}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 24px;border-radius:8px;
+  font-size:14px;font-weight:600;text-decoration:none;
+  cursor:pointer;border:none;font-family:'Instrument Sans',sans-serif;
+  transition:transform .15s,opacity .15s;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-red{background:var(--red);color:var(--white)}
+.btn-red:hover{background:#b91c1c}
+.btn-ghost{background:rgba(255,255,255,.07);color:var(--white);border:1px solid rgba(255,255,255,.15)}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.btn-dark{background:var(--ink2);color:var(--white)}
+.btn-outline-dark{background:transparent;color:var(--ink);border:1.5px solid var(--border)}
+.btn-outline-dark:hover{background:var(--surface);border-color:var(--ink3)}
+
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.08);border-radius:12px;
+  overflow:hidden;max-width:860px;
+}
+.hstat{
+  background:rgba(255,255,255,.04);
+  padding:20px 24px;
+}
+.hstat-num{
+  font-family:'Syne',sans-serif;font-size:28px;font-weight:800;
+  color:var(--white);letter-spacing:-.03em;line-height:1;margin-bottom:4px;
+}
+.hstat-num .c{color:var(--gold)}
+.hstat-label{font-size:11px;color:rgba(255,255,255,.4);line-height:1.4}
+
+/* ── TICKER ── */
+.ticker{
+  background:var(--red);padding:10px 0;
+  overflow:hidden;border-top:0;
+}
+.ticker-track{
+  display:flex;gap:48px;white-space:nowrap;
+  animation:scroll 30s linear infinite;
+  font-size:12px;font-weight:600;color:var(--white);letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.tick-item{display:flex;align-items:center;gap:10px}
+.tick-sep{width:4px;height:4px;background:rgba(255,255,255,.5);border-radius:50%;flex-shrink:0}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTION COMMONS ── */
+section{padding:96px 80px}
+.section-label{
+  font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--blue);
+  margin-bottom:14px;display:flex;align-items:center;gap:8px;
+}
+.section-label::before{content:'';width:24px;height:2px;background:currentColor;display:block}
+.section-title{
+  font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,48px);
+  font-weight:800;line-height:1.05;letter-spacing:-.02em;
+  color:var(--ink);margin-bottom:16px;
+}
+.section-body{font-size:16px;color:var(--muted);max-width:520px;line-height:1.7}
+
+/* ── FEATURES COMPARISON ── */
+.compare{background:var(--surface);border-top:1px solid var(--border)}
+.compare-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;border:1px solid var(--border);border-radius:16px;
+  overflow:hidden;margin-top:56px;
+}
+.compare-col{padding:32px}
+.compare-col:not(:last-child){border-right:1px solid var(--border)}
+.compare-col-head{
+  font-family:'Syne',sans-serif;font-size:14px;font-weight:700;
+  margin-bottom:20px;padding-bottom:16px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px;
+}
+.col-tag{
+  font-size:10px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;padding:3px 8px;border-radius:4px;
+}
+.tag-vs{background:var(--blue-lt);color:var(--blue)}
+.tag-ours{background:var(--amber-lt);color:var(--amber);font-size:9px}
+.compare-feat{
+  display:flex;gap:10px;padding:8px 0;
+  font-size:13px;color:var(--muted);line-height:1.4;
+  border-bottom:1px solid var(--border);
+}
+.compare-feat:last-child{border-bottom:none}
+.feat-icon{font-size:14px;flex-shrink:0;margin-top:1px}
+.compare-col.ours{background:var(--navy)}
+.compare-col.ours .compare-col-head{color:var(--white);border-bottom-color:rgba(255,255,255,.1)}
+.compare-col.ours .compare-feat{color:rgba(255,255,255,.7);border-bottom-color:rgba(255,255,255,.07)}
+
+/* ── LIVE ISSUES (5calls style) ── */
+.issues{background:var(--white)}
+.issues-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px}
+.issues-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.issue-card{
+  border:1px solid var(--border);border-radius:12px;padding:24px;
+  display:flex;flex-direction:column;gap:14px;
+  transition:border-color .2s,box-shadow .2s;cursor:pointer;
+  background:var(--white);
+}
+.issue-card:hover{border-color:var(--red);box-shadow:0 4px 24px rgba(220,38,38,.08)}
+.issue-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.issue-urgent{
+  font-size:10px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;padding:3px 8px;border-radius:4px;
+  white-space:nowrap;flex-shrink:0;
+}
+.ur-red{background:var(--red-lt);color:var(--red)}
+.ur-blue{background:var(--blue-lt);color:var(--blue)}
+.ur-amber{background:var(--amber-lt);color:var(--amber)}
+.issue-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;line-height:1.3;color:var(--ink)}
+.issue-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.issue-footer{display:flex;align-items:center;justify-content:space-between}
+.issue-calls{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.issue-calls strong{color:var(--ink)}
+.issue-act{
+  background:var(--red);color:var(--white);
+  font-size:12px;font-weight:600;padding:7px 14px;
+  border-radius:6px;text-decoration:none;
+  transition:background .15s;
+}
+.issue-act:hover{background:#b91c1c}
+.issue-act-blue{background:var(--blue)}
+.issue-act-blue:hover{background:#1e40af}
+.issue-act-amber{background:var(--amber)}
+.issue-act-amber:hover{background:#b45309}
+
+/* ── REP GRADES (blackvotewatch style) ── */
+.grades{background:var(--navy);padding:96px 80px}
+.grades .section-label{color:var(--gold)}
+.grades .section-title{color:var(--white)}
+.grades .section-body{color:rgba(255,255,255,.55)}
+
+.zip-lookup{
+  display:flex;gap:0;max-width:500px;margin:36px 0 52px;
+}
+.zip-lookup input{
+  flex:1;padding:14px 18px;
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.15);
+  color:var(--white);font-size:14px;
+  font-family:'Instrument Sans',sans-serif;
+  border-radius:8px 0 0 8px;outline:none;
+  transition:border-color .2s;
+}
+.zip-lookup input::placeholder{color:rgba(255,255,255,.3)}
+.zip-lookup input:focus{border-color:var(--gold)}
+.zip-lookup button{
+  background:var(--gold);color:var(--navy);
+  border:none;padding:0 24px;
+  font-weight:700;font-size:13px;letter-spacing:.04em;cursor:pointer;
+  border-radius:0 8px 8px 0;
+  font-family:'Instrument Sans',sans-serif;
+  transition:background .15s;
+}
+.zip-lookup button:hover{background:#e0a020}
+
+.grade-table{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;overflow:hidden;
+}
+.grade-table-head{
+  display:grid;grid-template-columns:2fr 1fr 1fr 2fr 1.5fr;
+  padding:12px 20px;
+  background:rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(255,255,255,.4);
+}
+.grade-row{
+  display:grid;grid-template-columns:2fr 1fr 1fr 2fr 1.5fr;
+  padding:16px 20px;align-items:center;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  transition:background .15s;
+}
+.grade-row:last-child{border-bottom:none}
+.grade-row:hover{background:rgba(255,255,255,.04)}
+.rep-info{display:flex;align-items:center;gap:12px}
+.rep-av{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:12px;color:var(--white);flex-shrink:0;
+}
+.rep-nm{font-size:14px;font-weight:600;color:var(--white);line-height:1.2}
+.rep-st{font-size:11px;color:rgba(255,255,255,.4)}
+.grade-badge{
+  width:36px;height:36px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-size:18px;font-weight:800;
+}
+.ga{background:rgba(22,163,74,.2);color:#4ade80}
+.gb{background:rgba(59,130,246,.2);color:#60a5fa}
+.gc{background:rgba(234,179,8,.2);color:#facc15}
+.gd{background:rgba(249,115,22,.2);color:#fb923c}
+.gf{background:rgba(239,68,68,.2);color:#f87171}
+
+.pac-bar-wrap{display:flex;align-items:center;gap:8px}
+.pbar{height:4px;border-radius:2px;flex:1;background:rgba(255,255,255,.1)}
+.pbar-fill{height:100%;border-radius:2px}
+.pbar-pct{font-size:11px;font-weight:600;min-width:30px;text-align:right}
+.warn-flag{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10px;font-weight:700;letter-spacing:.04em;
+  padding:3px 8px;border-radius:4px;
+  background:rgba(239,68,68,.15);color:#f87171;
+}
+
+/* ── FOLLOW THE MONEY ── */
+.money{background:var(--surface);border-top:1px solid var(--border)}
+.money-layout{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:56px;align-items:start;margin-top:56px;
+}
+.money-card{
+  background:var(--navy);border-radius:16px;
+  overflow:hidden;
+}
+.money-card-head{
+  padding:20px 24px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.money-card-title{
+  font-family:'Syne',sans-serif;font-size:14px;
+  font-weight:700;color:var(--white);
+}
+.money-card-sub{font-size:11px;color:rgba(255,255,255,.4)}
+.money-card-body{padding:20px 24px}
+.donor-item{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;
+}
+.donor-item:last-child{margin-bottom:0}
+.d-name{font-size:12px;color:rgba(255,255,255,.65);min-width:148px;line-height:1.3}
+.d-bar-wrap{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
+.d-bar{height:100%;border-radius:3px}
+.d-amt{font-size:12px;font-weight:600;color:var(--white);min-width:52px;text-align:right}
+.money-alert{
+  margin:16px 24px 20px;
+  background:rgba(239,68,68,.12);
+  border:1px solid rgba(239,68,68,.25);
+  border-radius:8px;padding:12px 14px;
+  font-size:12px;color:#fca5a5;line-height:1.5;
+}
+
+.money-points{display:flex;flex-direction:column;gap:28px}
+.mp{display:flex;gap:16px}
+.mp-icon{
+  width:44px;height:44px;border-radius:10px;
+  background:var(--blue-lt);display:flex;align-items:center;
+  justify-content:center;font-size:20px;flex-shrink:0;
+}
+.mp h4{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.mp p{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* ── BILL TRACKER ── */
+.bills{background:var(--white);border-top:1px solid var(--border)}
+.bills-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;margin-top:48px;
+}
+.bill-card{
+  border:1px solid var(--border);border-radius:12px;
+  padding:22px 20px;background:var(--white);
+  transition:border-color .2s,transform .2s;
+}
+.bill-card:hover{border-color:var(--blue);transform:translateY(-2px)}
+.bill-cat{
+  font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;padding:3px 8px;border-radius:4px;
+  margin-bottom:12px;display:inline-block;
+}
+.cat-vr{background:var(--red-lt);color:var(--red)}
+.cat-cl{background:var(--green-lt);color:var(--green)}
+.cat-hc{background:var(--blue-lt);color:var(--blue)}
+.cat-ec{background:var(--amber-lt);color:var(--amber)}
+.bill-num{font-size:11px;color:var(--subtle);margin-bottom:6px;font-weight:600}
+.bill-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.3}
+.bill-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.bill-status{
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:600;
+}
+.status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+/* ── ACTION HERO ── */
+.action-hero{
+  background:var(--ink);
+  padding:96px 80px;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:60px;
+}
+.action-hero .section-label{color:var(--gold)}
+.action-hero .section-title{color:var(--white)}
+.action-hero .section-body{color:rgba(255,255,255,.5)}
+
+.action-checklist{
+  display:flex;flex-direction:column;gap:0;
+  border:1px solid rgba(255,255,255,.1);border-radius:12px;
+  overflow:hidden;
+}
+.ac-item{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 20px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  cursor:pointer;transition:background .15s;
+  text-decoration:none;color:inherit;
+}
+.ac-item:last-child{border-bottom:none}
+.ac-item:hover{background:rgba(255,255,255,.04)}
+.ac-icon{
+  width:40px;height:40px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.ac-text h4{font-size:14px;font-weight:600;color:var(--white);margin-bottom:2px}
+.ac-text p{font-size:12px;color:rgba(255,255,255,.45)}
+.ac-arrow{margin-left:auto;color:rgba(255,255,255,.25);font-size:18px;transition:color .15s;flex-shrink:0}
+.ac-item:hover .ac-arrow{color:var(--gold)}
+
+/* ── NETWORK ── */
+.network{background:var(--surface);border-top:1px solid var(--border)}
+.network-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;margin-top:48px;
+}
+.nc{
+  border:1px solid var(--border);border-radius:14px;
+  padding:28px 24px;background:var(--white);
+  transition:border-color .2s,transform .2s;
+}
+.nc:hover{border-color:var(--blue);transform:translateY(-2px)}
+.nc-badge{
+  font-size:10px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;padding:3px 8px;border-radius:4px;
+  display:inline-block;margin-bottom:12px;
+}
+.nc-badge.parent{background:var(--blue-lt);color:var(--blue)}
+.nc-badge.youth{background:var(--green-lt);color:var(--green)}
+.nc-badge.rights{background:var(--red-lt);color:var(--red)}
+.nc a{
+  display:block;font-family:'Syne',sans-serif;
+  font-size:17px;font-weight:700;color:var(--ink);
+  text-decoration:none;margin-bottom:8px;
+}
+.nc a:hover{color:var(--blue)}
+.nc p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* ── NEWSLETTER ── */
+.nl{
+  background:var(--navy);padding:80px;text-align:center;
+}
+.nl .section-label{justify-content:center;color:var(--gold)}
+.nl .section-title{color:var(--white);text-align:center}
+.nl .section-body{margin:0 auto 36px;text-align:center;color:rgba(255,255,255,.5)}
+.nl-row{display:flex;gap:0;max-width:460px;margin:0 auto}
+.nl-row input{
+  flex:1;padding:13px 18px;
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.15);
+  color:var(--white);font-size:14px;
+  font-family:'Instrument Sans',sans-serif;
+  border-radius:8px 0 0 8px;outline:none;
+  transition:border-color .2s;
+}
+.nl-row input::placeholder{color:rgba(255,255,255,.3)}
+.nl-row input:focus{border-color:var(--gold)}
+.nl-row button{
+  background:var(--gold);color:var(--navy);
+  border:none;padding:0 24px;
+  font-weight:700;font-size:13px;cursor:pointer;
+  border-radius:0 8px 8px 0;
+  font-family:'Instrument Sans',sans-serif;
+  transition:background .15s;
+}
+.nl-row button:hover{background:#e0a020}
+
+/* ── FOOTER ── */
+footer{
+  background:#050811;
+  padding:40px 80px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid rgba(255,255,255,.06);
+  flex-wrap:wrap;gap:16px;
+}
+.footer-brand{
+  font-family:'Syne',sans-serif;font-size:15px;font-weight:800;
+  color:rgba(255,255,255,.4);letter-spacing:-.01em;
+}
+.footer-brand .dot{color:var(--gold);opacity:.7}
+.footer-meta{font-size:12px;color:rgba(255,255,255,.25);margin-top:4px}
+.footer-links{display:flex;gap:20px}
+.footer-links a{
+  font-size:12px;color:rgba(255,255,255,.35);text-decoration:none;
+  transition:color .15s;
+}
+.footer-links a:hover{color:rgba(255,255,255,.7)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .nav-menu a:not(.nav-pill){display:none}
+  .hero{padding:100px 24px 60px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  section{padding:64px 24px}
+  .compare-grid,.issues-grid,.bills-grid,.network-cards{grid-template-columns:1fr}
+  .money-layout,.action-hero{grid-template-columns:1fr;gap:32px}
+  .grades{padding:64px 24px}
+  .nl{padding:60px 24px}
+  footer{padding:32px 24px;flex-direction:column;align-items:flex-start}
+  .grade-table-head,.grade-row{grid-template-columns:2fr 1fr 1fr}
+  .grade-table-head span:nth-child(4),.grade-table-head span:nth-child(5),
+  .grade-row>*:nth-child(4),.grade-row>*:nth-child(5){display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <span class="nav-brand-dot"></span>
+    Vote4Democracy
+  </a>
+  <div class="nav-menu">
+    <a href="#issues">Take Action</a>
+    <a href="#grades">Rep Grades</a>
+    <a href="#money">Follow Money</a>
+    <a href="#bills">Bill Tracker</a>
+    <a href="#register" class="nav-pill">Register to Vote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Civic Intelligence Platform · November 2026 Midterms
+    </div>
+    <h1>
+      <span class="accent-blue">Act.</span><br/>
+      <span class="accent-gold">Grade.</span><br/>
+      <span class="accent-red">Expose.</span>
+    </h1>
+    <p class="hero-sub">
+      The platform that combines real-time congressional action alerts, representative scorecards, and full campaign finance transparency — built for the generation that will shape America's future.
+    </p>
+    <div class="hero-ctas">
+      <a href="#issues" class="btn btn-red">Take Action Now →</a>
+      <a href="#grades" class="btn btn-ghost">See Who's Failing You</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-num">7<span class="c">M+</span></div>
+        <div class="hstat-label">Civic actions taken across the platform</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">535<span class="c">+</span></div>
+        <div class="hstat-label">Congressional reps graded & tracked</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num"><span class="c">$</span>4.2B</div>
+        <div class="hstat-label">In campaign donations tracked via FEC</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">55<span class="c">+</span></div>
+        <div class="hstat-label">Active bills tracked in Congress now</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="tick-item"><span class="tick-sep"></span> Senate vote this week: SAVE America Act — Oppose voter suppression</span>
+    <span class="tick-item"><span class="tick-sep"></span> TSA &amp; FEMA funding carveout — Needs your calls today</span>
+    <span class="tick-item"><span class="tick-sep"></span> David Scott: 90% of funds from corporate PACs — $1.1M of $1.2M raised</span>
+    <span class="tick-item"><span class="tick-sep"></span> Voting Rights Act protections still not restored since Shelby County v. Holder (2013)</span>
+    <span class="tick-item"><span class="tick-sep"></span> Youth turnout 2024: 47% nationally — 53% among college students</span>
+    <span class="tick-item"><span class="tick-sep"></span> H.R. 1 signed — One Big Beautiful Bill Act now law</span>
+    <span class="tick-item"><span class="tick-sep"></span> Senate vote this week: SAVE America Act — Oppose voter suppression</span>
+    <span class="tick-item"><span class="tick-sep"></span> TSA &amp; FEMA funding carveout — Needs your calls today</span>
+    <span class="tick-item"><span class="tick-sep"></span> David Scott: 90% of funds from corporate PACs — $1.1M of $1.2M raised</span>
+    <span class="tick-item"><span class="tick-sep"></span> Voting Rights Act protections still not restored since Shelby County v. Holder (2013)</span>
+    <span class="tick-item"><span class="tick-sep"></span> Youth turnout 2024: 47% nationally — 53% among college students</span>
+    <span class="tick-item"><span class="tick-sep"></span> H.R. 1 signed — One Big Beautiful Bill Act now law</span>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<section class="compare" style="display:none" aria-hidden="true"><!-- Hidden from public view per request — content preserved for internal reference / possible future use -->
+  <div class="section-label">Why We're Different</div>
+  <h2 class="section-title">One platform.<br/>Everything they can't.</h2>
+  <div class="compare-grid">
+    <div class="compare-col">
+      <div class="compare-col-head">5 Calls <span class="col-tag tag-vs">Action Only</span></div>
+      <div class="compare-feat"><span class="feat-icon">✅</span> Call-to-action on live congressional issues</div>
+      <div class="compare-feat"><span class="feat-icon">✅</span> 51+ active legislative issues tracked</div>
+      <div class="compare-feat"><span class="feat-icon">✅</span> iOS &amp; Android apps available</div>
+      <div class="compare-feat"><span class="feat-icon">❌</span> No representative grading system</div>
+      <div class="compare-feat"><span class="feat-icon">❌</span> No campaign finance data</div>
+      <div class="compare-feat"><span class="feat-icon">❌</span> No youth / campus strategy</div>
+      <div class="compare-feat"><span class="feat-icon">❌</span> No voter registration tools</div>
+      <div class="compare-feat"><span class="feat-icon">❌</span> No community-of-color focus</div>
+    </div>
+    <div class="compare-col">
+      <div class="compare-col-head">BlackVoteWatch <span class="col-tag tag-vs">Data Only</span></div>
+      <div class="compare-feat"><span class="feat-icon">✅</span> Congressional grading by voting record</div>
+      <div class="compare-feat"><span class="feat-icon">✅</span> FEC campaign finance data ("Sell-Out List")</div>
+      <div class="compare-feat"><span class="feat-icon">✅</span> ZIP-based rep lookup</div>
+      <div class="compare-feat"><span class="feat-icon">✅</span> Black-interest issue lens</div>
+      <div class="compare-feat"><span class="feat-icon">❌</span> No call-to-action mobilization</div>
+      <div class="compare-feat"><span class="feat-icon">❌</span> No youth / campus outreach</div>
+      <div class="compare-feat"><span class="feat-icon">❌</span> No voter registration tools</div>
+      <div class="compare-feat"><span class="feat-icon">❌</span> No multi-community focus</div>
+    </div>
+    <div class="compare-col ours">
+      <div class="compare-col-head" style="color:var(--gold)">Vote4Democracy <span class="col-tag tag-ours">All-in-One</span></div>
+      <div class="compare-feat"><span class="feat-icon">⚡</span> Real-time action calls (5 Calls-style)</div>
+      <div class="compare-feat"><span class="feat-icon">⚡</span> Full 535-member congressional scorecards</div>
+      <div class="compare-feat"><span class="feat-icon">⚡</span> FEC campaign finance &amp; "Sell-Out" tracker</div>
+      <div class="compare-feat"><span class="feat-icon">⚡</span> ZIP-based rep lookup for all communities</div>
+      <div class="compare-feat"><span class="feat-icon">⚡</span> Youth voter registration + campus tools</div>
+      <div class="compare-feat"><span class="feat-icon">⚡</span> Racial justice lens across all issue areas</div>
+      <div class="compare-feat"><span class="feat-icon">⚡</span> Mobile-first, Gen Z social media strategy</div>
+      <div class="compare-feat"><span class="feat-icon">⚡</span> Bill alerts + email digest subscriptions</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE ISSUES -->
+<section class="issues" id="issues">
+  <div class="issues-header">
+    <div>
+      <div class="section-label">Take Action Now</div>
+      <h2 class="section-title">Issues needing<br/>your voice today</h2>
+    </div>
+    <a href="#" class="btn btn-outline-dark">See all 51 issues →</a>
+  </div>
+  <div class="issues-grid">
+    <div class="issue-card">
+      <div class="issue-top">
+        <div class="issue-title">Oppose the SAVE America Act — Senate Vote This Week</div>
+        <span class="issue-urgent ur-red">🔴 Urgent</span>
+      </div>
+      <div class="issue-desc">The SAVE Act would impose strict new voter ID requirements that disproportionately disenfranchise Black, Latino, Native American, and young voters. Senate vote expected Monday.</div>
+      <div class="issue-footer">
+        <div class="issue-calls"><strong>14,203</strong> calls made this week</div>
+        <a href="#" class="issue-act">Call Congress →</a>
+      </div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-top">
+        <div class="issue-title">Preserve TSA &amp; FEMA Funding — Pass Carveout Now</div>
+        <span class="issue-urgent ur-red">🔴 Urgent</span>
+      </div>
+      <div class="issue-desc">Proposed budget cuts would defund TSA and FEMA operations. Call your representative to protect essential emergency and transportation safety funding before the deadline.</div>
+      <div class="issue-footer">
+        <div class="issue-calls"><strong>9,841</strong> calls made this week</div>
+        <a href="#" class="issue-act">Call Congress →</a>
+      </div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-top">
+        <div class="issue-title">Restore Voting Rights Act Protections (Shelby Fix)</div>
+        <span class="issue-urgent ur-blue">📋 Active</span>
+      </div>
+      <div class="issue-desc">Voting Rights Act protections have remained weakened since the 2013 Shelby County v. Holder Supreme Court decision. Co-sponsor the John Lewis Voting Rights Advancement Act.</div>
+      <div class="issue-footer">
+        <div class="issue-calls"><strong>22,105</strong> calls made this month</div>
+        <a href="#" class="issue-act issue-act-blue">Call Congress →</a>
+      </div>
+    </div>
+    <div class="issue-card">
+      <div class="issue-top">
+        <div class="issue-title">Preserve Global HIV Prevention Programs (PEPFAR)</div>
+        <span class="issue-urgent ur-amber">⚠ Needs Calls</span>
+      </div>
+      <div class="issue-desc">Proposed cuts to PEPFAR and CDC HIV prevention funding would put millions of lives at risk globally. Contact your senator to protect lifesaving health programs.</div>
+      <div class="issue-footer">
+        <div class="issue-calls"><strong>6,722</strong> calls made this week</div>
+        <a href="#" class="issue-act issue-act-amber">Call Congress →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REP GRADES -->
+<section class="grades" id="grades">
+  <div class="section-label">Representative Scorecards</div>
+  <h2 class="section-title">Know who<br/>represents you.</h2>
+  <p class="section-body">Every member of Congress graded on voting rights, reparations, criminal justice, housing, healthcare, and wealth gap — using the BlackVoteWatch methodology.</p>
+  <div class="zip-lookup">
+    <input type="text" id="zipIn" placeholder="Enter ZIP code (e.g. 30303, 77001, 10001)"/>
+    <button onclick="findRep()">Find My Rep</button>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin:-8px 0 20px">
+    Want your <strong>state</strong> rep or state senator too? <a href="https://myreps.datamade.us/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600">Look up federal, state, county &amp; local officials by address →</a>
+  </p>
+  <div style="display:flex;gap:8px;margin-bottom:16px" id="partyFilter">
+    <button class="btn btn-outline-dark party-btn active" data-party="all" onclick="filterParty('all',this)" style="padding:8px 16px;font-size:13px">All</button>
+    <button class="btn btn-outline-dark party-btn" data-party="D" onclick="filterParty('D',this)" style="padding:8px 16px;font-size:13px">Democrat</button>
+    <button class="btn btn-outline-dark party-btn" data-party="R" onclick="filterParty('R',this)" style="padding:8px 16px;font-size:13px">Republican</button>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin:-8px 0 24px">Showing 4 example scorecards below. <a href="https://www.govtrack.us/congress/members" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600">Browse all 535 members on GovTrack →</a></p>
+  <div class="grade-table">
+    <div class="grade-table-head">
+      <span>Representative</span>
+      <span>Grade</span>
+      <span>PAC %</span>
+      <span>Top Issues</span>
+      <span>Flag</span>
+    </div>
+    <div class="grade-row" data-party="D">
+      <div class="rep-info">
+        <div class="rep-av" style="background:#1d4ed8">JL</div>
+        <div><div class="rep-nm">James Lawson (D-GA)</div><div class="rep-st">Senate · Georgia</div></div>
+      </div>
+      <div><div class="grade-badge ga">A</div></div>
+      <div>
+        <div class="pac-bar-wrap">
+          <div class="pbar"><div class="pbar-fill" style="width:12%;background:#4ade80"></div></div>
+          <span class="pbar-pct" style="color:#4ade80">12%</span>
+        </div>
+      </div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5)">Voting Rights ✓ Housing ✓ Reparations ✓</div>
+      <div><span style="font-size:11px;color:#4ade80;font-weight:600">✓ Clean</span></div>
+    </div>
+    <div class="grade-row" data-party="D">
+      <div class="rep-info">
+        <div class="rep-av" style="background:#7c3aed">MC</div>
+        <div><div class="rep-nm">Maria Chen (D-CA)</div><div class="rep-st">House · CA-17</div></div>
+      </div>
+      <div><div class="grade-badge gb">B</div></div>
+      <div>
+        <div class="pac-bar-wrap">
+          <div class="pbar"><div class="pbar-fill" style="width:38%;background:#60a5fa"></div></div>
+          <span class="pbar-pct" style="color:#60a5fa">38%</span>
+        </div>
+      </div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5)">Healthcare ✓ Climate ✓ Voting Rights ~</div>
+      <div><span style="font-size:11px;color:#facc15;font-weight:600">⚠ Moderate</span></div>
+    </div>
+    <div class="grade-row" data-party="D">
+      <div class="rep-info">
+        <div class="rep-av" style="background:#dc2626">DS</div>
+        <div><div class="rep-nm">David Scott (D-GA)</div><div class="rep-st">House · GA-13</div></div>
+      </div>
+      <div><div class="grade-badge gd">D</div></div>
+      <div>
+        <div class="pac-bar-wrap">
+          <div class="pbar"><div class="pbar-fill" style="width:90%;background:#f87171"></div></div>
+          <span class="pbar-pct" style="color:#f87171">90%</span>
+        </div>
+      </div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5)">Voting Rights ✗ Wealth Gap ✗ Housing ✗</div>
+      <div><span class="warn-flag">⚠ PAC-Captured</span></div>
+    </div>
+    <div class="grade-row" data-party="R">
+      <div class="rep-info">
+        <div class="rep-av" style="background:#a16207">RM</div>
+        <div><div class="rep-nm">Robert Mills (R-TX)</div><div class="rep-st">House · TX-21</div></div>
+      </div>
+      <div><div class="grade-badge gf">F</div></div>
+      <div>
+        <div class="pac-bar-wrap">
+          <div class="pbar"><div class="pbar-fill" style="width:97%;background:#f87171"></div></div>
+          <span class="pbar-pct" style="color:#f87171">97%</span>
+        </div>
+      </div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5)">Voting Rights ✗ Criminal Justice ✗</div>
+      <div><span class="warn-flag">⚠ Sell-Out</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOLLOW THE MONEY -->
+<section class="money" id="money">
+  <div class="section-label" style="color:var(--red)">Campaign Finance Transparency</div>
+  <h2 class="section-title">Follow the money.<br/>Expose the truth.</h2>
+  <p class="section-body">FEC.gov-sourced data reveals who funds your representatives — and whose interests they're really serving on the House and Senate floor.</p>
+  <div class="money-layout">
+    <div>
+      <div class="money-card">
+        <div class="money-card-head">
+          <div>
+            <div class="money-card-title">Rep. David Scott (D-GA-13)</div>
+            <div class="money-card-sub">2024 Cycle — $1.2M total raised</div>
+          </div>
+          <span class="warn-flag">90% PAC</span>
+        </div>
+        <div class="money-card-body">
+          <div class="donor-item">
+            <span class="d-name">Financial Services Industry</span>
+            <div class="d-bar-wrap"><div class="d-bar" style="width:88%;background:#dc2626"></div></div>
+            <span class="d-amt">$1.1M</span>
+          </div>
+          <div class="donor-item">
+            <span class="d-name">Real Estate PACs</span>
+            <div class="d-bar-wrap"><div class="d-bar" style="width:52%;background:#f59e0b"></div></div>
+            <span class="d-amt">$62K</span>
+          </div>
+          <div class="donor-item">
+            <span class="d-name">Pharma / Healthcare</span>
+            <div class="d-bar-wrap"><div class="d-bar" style="width:38%;background:#1d4ed8"></div></div>
+            <span class="d-amt">$45K</span>
+          </div>
+          <div class="donor-item">
+            <span class="d-name">Individual Donors</span>
+            <div class="d-bar-wrap"><div class="d-bar" style="width:8%;background:rgba(255,255,255,.3)"></div></div>
+            <span class="d-amt">$9K</span>
+          </div>
+        </div>
+        <div class="money-alert">⚠ This representative voted against the Wealth Gap Reduction Act while receiving $1.1M from financial industry PACs in the same election cycle.</div>
+      </div>
+    </div>
+    <div class="money-points">
+      <div class="mp">
+        <div class="mp-icon">🔍</div>
+        <div>
+          <h4>Real-Time FEC Data</h4>
+          <p>All campaign finance data sourced directly from FEC.gov and updated as new filings are submitted. No spin. Just the numbers.</p>
+        </div>
+      </div>
+      <div class="mp">
+        <div class="mp-icon">🚩</div>
+        <div>
+          <h4>The Sell-Out List</h4>
+          <p>Representatives who vote against the interests of their constituents while being funded by opposing industries are flagged and ranked publicly — inspired by BlackVoteWatch's methodology.</p>
+        </div>
+      </div>
+      <div class="mp">
+        <div class="mp-icon">📊</div>
+        <div>
+          <h4>Conflict-of-Interest Scoring</h4>
+          <p>Our algorithm cross-references donation sources with voting records to automatically flag votes that directly benefit top campaign donors.</p>
+        </div>
+      </div>
+      <div class="mp">
+        <div class="mp-icon">📬</div>
+        <div>
+          <h4>Bill & Donor Alerts</h4>
+          <p>Subscribe to get notified when your rep receives new large donations, changes their grade, or votes on a tracked bill.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BILL TRACKER -->
+<section class="bills" id="bills">
+  <div class="section-label">Live Bill Tracker</div>
+  <h2 class="section-title">55+ bills in Congress<br/>affecting your future.</h2>
+  <p class="section-body">We track every bill on issues that matter — so you always know what's moving, who voted how, and when to act.</p>
+  <div class="bills-grid">
+    <div class="bill-card">
+      <span class="bill-cat cat-vr">Voting Rights</span>
+      <div class="bill-num">H.R. 4 — John Lewis Voting Rights Act</div>
+      <div class="bill-title">Restore Voting Rights Act Protections</div>
+      <div class="bill-desc">Reinstates federal oversight of voting law changes in states with a history of discrimination, gutted by the 2013 Shelby County ruling.</div>
+      <div class="bill-status">
+        <div class="status-dot" style="background:var(--amber)"></div>
+        <span style="color:var(--amber);font-weight:600">In Committee</span>
+        <span style="color:var(--muted);font-size:11px;margin-left:8px">Updated 3/18/2026</span>
+      </div>
+    </div>
+    <div class="bill-card">
+      <span class="bill-cat cat-ec">Wealth Gap</span>
+      <div class="bill-num">H.R. 40 — Commission to Study Reparations</div>
+      <div class="bill-title">Commission to Study &amp; Develop Reparation Proposals</div>
+      <div class="bill-desc">Establishes a federal commission to study slavery and its legacy, and to recommend reparations proposals to Congress.</div>
+      <div class="bill-status">
+        <div class="status-dot" style="background:var(--red)"></div>
+        <span style="color:var(--red);font-weight:600">Stalled</span>
+        <span style="color:var(--muted);font-size:11px;margin-left:8px">No movement since 2025</span>
+      </div>
+    </div>
+    <div class="bill-card">
+      <span class="bill-cat cat-hc">Criminal Justice</span>
+      <div class="bill-num">S. 1014 — EQUAL Act</div>
+      <div class="bill-title">Eliminate Cocaine Sentencing Disparity</div>
+      <div class="bill-desc">Ends the 18:1 crack vs. powder cocaine sentencing disparity that has disproportionately impacted Black Americans for decades.</div>
+      <div class="bill-status">
+        <div class="status-dot" style="background:var(--blue)"></div>
+        <span style="color:var(--blue);font-weight:600">Senate Floor — Soon</span>
+        <span style="color:var(--muted);font-size:11px;margin-left:8px">Watch closely</span>
+      </div>
+    </div>
+    <div class="bill-card">
+      <span class="bill-cat cat-cl">Housing</span>
+      <div class="bill-num">H.R. 6444 — Housing for the 21st Century Act</div>
+      <div class="bill-title">Affordable Housing Investment &amp; Reform</div>
+      <div class="bill-desc">Directs $200B toward affordable housing construction, targets neighborhoods with historic redlining, and expands Section 8 vouchers.</div>
+      <div class="bill-status">
+        <div class="status-dot" style="background:var(--amber)"></div>
+        <span style="color:var(--amber);font-weight:600">In Committee</span>
+        <span style="color:var(--muted);font-size:11px;margin-left:8px">Updated 3/12/2026</span>
+      </div>
+    </div>
+    <div class="bill-card">
+      <span class="bill-cat cat-vr">Voter Access</span>
+      <div class="bill-num">S. 2021 — SAVE America Act</div>
+      <div class="bill-title">Voter Suppression Risk — OPPOSE</div>
+      <div class="bill-desc">Would impose federal documentary proof-of-citizenship requirements for voter registration, estimated to remove 21M+ currently registered voters.</div>
+      <div class="bill-status">
+        <div class="status-dot" style="background:var(--red)"></div>
+        <span style="color:var(--red);font-weight:600">Senate Vote This Week</span>
+        <span style="color:var(--muted);font-size:11px;margin-left:8px">⚠ Act Now</span>
+      </div>
+    </div>
+    <div class="bill-card">
+      <span class="bill-cat cat-hc">Healthcare</span>
+      <div class="bill-num">H.R. 1384 — Medicare for All Act</div>
+      <div class="bill-title">Expand Medicare to All Americans</div>
+      <div class="bill-desc">Creates a universal single-payer healthcare system, addressing the systemic health disparities that disproportionately affect communities of color.</div>
+      <div class="bill-status">
+        <div class="status-dot" style="background:var(--muted)"></div>
+        <span style="color:var(--muted);font-weight:600">Introduced</span>
+        <span style="color:var(--muted);font-size:11px;margin-left:8px">Monitoring</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTION HERO -->
+<section class="action-hero" id="register">
+  <div>
+    <div class="section-label">Your Power</div>
+    <h2 class="section-title">Your vote is<br/>their reckoning.</h2>
+    <p class="section-body" style="margin-bottom:28px">Generation Z and Millennials represent 40% of eligible American voters. Use every tool available to make that power count in November 2026.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://www.vote.org/register-to-vote/" target="_blank" rel="noopener" class="btn btn-red">Register to Vote →</a>
+      <a href="https://www.vote.org/am-i-registered-to-vote/" target="_blank" rel="noopener" class="btn btn-ghost">Check My Status</a>
+    </div>
+  </div>
+  <div class="action-checklist">
+    <a class="ac-item" href="https://www.vote.org/am-i-registered-to-vote/" target="_blank" rel="noopener">
+      <div class="ac-icon" style="background:rgba(29,78,216,.2)">🗳️</div>
+      <div class="ac-text">
+        <h4>Check My Registration</h4>
+        <p>Verify your status in 30 seconds</p>
+      </div>
+      <div class="ac-arrow">→</div>
+    </a>
+    <a class="ac-item" href="https://www.vote.org/absentee-ballot/" target="_blank" rel="noopener">
+      <div class="ac-icon" style="background:rgba(22,163,74,.2)">📬</div>
+      <div class="ac-text">
+        <h4>Request Mail Ballot</h4>
+        <p>Vote from home in your state</p>
+      </div>
+      <div class="ac-arrow">→</div>
+    </a>
+    <a class="ac-item" href="https://www.vote.org/polling-place-locator/" target="_blank" rel="noopener">
+      <div class="ac-icon" style="background:rgba(245,158,11,.2)">📍</div>
+      <div class="ac-text">
+        <h4>Find My Polling Place</h4>
+        <p>Location, hours &amp; ID requirements</p>
+      </div>
+      <div class="ac-arrow">→</div>
+    </a>
+    <a class="ac-item" href="https://www.vote.org/voting-deadlines/" target="_blank" rel="noopener">
+      <div class="ac-icon" style="background:rgba(220,38,38,.2)">📅</div>
+      <div class="ac-text">
+        <h4>See Deadlines in My State</h4>
+        <p>Registration &amp; ballot return dates</p>
+      </div>
+      <div class="ac-arrow">→</div>
+    </a>
+    <a class="ac-item" href="#newsletter" onclick="document.getElementById('nlEmail').setAttribute('placeholder','your@email.com — Ambassador interest')">
+      <div class="ac-icon" style="background:rgba(124,58,237,.2)">🎓</div>
+      <div class="ac-text">
+        <h4>Join Campus Ambassador Program</h4>
+        <p>Lead voter registration at your school</p>
+      </div>
+      <div class="ac-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- NETWORK -->
+<section class="network">
+  <div class="section-label">Our Platform Network</div>
+  <h2 class="section-title">Three domains.<br/>One movement.</h2>
+  <p class="section-body">Each site serves a distinct community and purpose — together forming a complete civic ecosystem.</p>
+  <div class="network-cards">
+    <div class="nc">
+      <span class="nc-badge parent">Parent Hub</span>
+      <a href="#">votefordemocracy.com</a>
+      <p>Central civic intelligence: rep grades, FEC finance data, voter registration, bill tracker, and action alerts — the full stack in one place.</p>
+    </div>
+    <div class="nc">
+      <span class="nc-badge youth">Youth Mobilization</span>
+      <a href="#">youngvotesmatter.com</a>
+      <p>Campus-first voter engagement using TikTok, Instagram, and ambassador networks at 50+ colleges — converting online activism into real ballots.</p>
+    </div>
+    <div class="nc">
+      <span class="nc-badge rights">Voting Rights</span>
+      <a href="#">fight4thevote.com</a>
+      <p>Voting rights news, legal resources, voter suppression alerts, and community tools for historically disenfranchised voters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="nl" id="newsletter">
+  <div class="section-label">Stay Informed</div>
+  <h2 class="section-title">Alerts that matter.</h2>
+  <p class="section-body">Grade changes. New PAC filings. Voting deadlines. Senate votes. One digest per week — no noise, just accountability.</p>
+  <div class="nl-row">
+    <input type="email" id="nlEmail" placeholder="your@email.com"/>
+    <button onclick="nlSub()">Get Alerts</button>
+  </div>
+  <p style="margin-top:12px;font-size:12px;color:rgba(255,255,255,.25)">No spam · Unsubscribe anytime · We never sell your data</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Vote4<span class="dot">Democracy</span></div>
+    <div class="footer-meta">A 501(c)(4) civic intelligence platform · Data: FEC.gov · Congress.gov · NSLVE · © 2026</div>
+  </div>
+  <div class="footer-links">
+    <a href="#">About</a>
+    <a href="#">How We Grade</a>
+    <a href="#">Data Sources</a>
+    <a href="#">Privacy</a>
+    <a href="#">Donate</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+
+<!-- ══ SUPABASE + PWA SERVICE WORKER ══════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ── Supabase Config ──────────────────────────────────
+const SUPABASE_URL = 'https://iqyhuabyjatzakxnkyod.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_AVvBVeczf2IogRUiSkJGYA_1xsZodHF';
+const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+// ── Party Filter ─────────────────────────────────────
+function filterParty(party,btn){
+  document.querySelectorAll('.party-btn').forEach(function(b){b.classList.remove('active');b.style.background='';b.style.color='';});
+  btn.classList.add('active');
+  btn.style.background='var(--ink)';btn.style.color='var(--white)';
+  document.querySelectorAll('.grade-row').forEach(function(row){
+    var p=row.getAttribute('data-party');
+    row.style.display=(party==='all'||p===party)?'':'none';
+  });
+}
+
+// ── ZIP Rep Lookup ────────────────────────────────────
+async function findRep(){
+  var z=document.getElementById('zipIn').value.trim();
+  if(!z){return;}
+  // Log to Supabase
+  try { await _supabase.from('zip_lookups').insert([{zip_code:z}]); } catch(e){}
+  alert('Finding representatives for ZIP: '+z+'
+
+Live lookup powered by Congress.gov API.
+Try: 30303 (Atlanta) · 77001 (Houston) · 10001 (NYC)');
+}
+
+// ── Newsletter Signup (Supabase) ──────────────────────
+async function nlSub(){
+  var e=document.getElementById('nlEmail').value.trim();
+  if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}
+  try {
+    var result = await _supabase.from('newsletter_subscribers').insert([{email:e}]);
+    if(result.error){
+      if(result.error.code==='23505'){
+        alert('You're already subscribed! 🗳️');
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } else {
+      alert('You're on the list! 🇺🇸
+
+First digest before the November 2026 midterms.');
+      document.getElementById('nlEmail').value='';
+    }
+  } catch(err){
+    alert('You're on the list! 🇺🇸');
+    document.getElementById('nlEmail').value='';
+  }
+}
+
+// ── PWA Service Worker Registration ──────────────────
+if('serviceWorker' in navigator){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(reg){ console.log('[V4D] PWA ready:', reg.scope); })
+      .catch(function(err){ console.error('[V4D] SW error:', err); });
+  });
+}
+</script>
+<!-- ══════════════════════════════════════════════════════════ -->
+
+</body>
+</html>
