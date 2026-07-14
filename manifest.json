@@ -1,0 +1,44 @@
+{
+  "name": "Vote4Democracy",
+  "short_name": "Vote4D",
+  "description": "Civic Intelligence Platform — Act. Grade. Follow the Money. 2026 Midterms.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "lang": "en-US",
+  "categories": ["government", "politics", "news"],
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Register to Vote",
+      "short_name": "Register",
+      "description": "Check or update your voter registration",
+      "url": "/#register",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Take Action",
+      "short_name": "Act Now",
+      "description": "See issues needing your voice today",
+      "url": "/#issues",
+      "icons": [{ "src": "/assets/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
