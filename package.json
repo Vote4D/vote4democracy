@@ -1,0 +1,20 @@
+{
+  "name": "vote4democracy",
+  "version": "1.0.0",
+  "description": "Civic Intelligence Platform — Act. Grade. Follow the Money. 2026 Midterms.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "civic",
+    "democracy",
+    "voting"
+  ],
+  "author": "Project OMega",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
