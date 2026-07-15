@@ -1,0 +1,14 @@
+{
+  "name": "vote4democracy",
+  "version": "1.0.0",
+  "description": "Civic Intelligence Platform — Act. Grade. Follow the Money. 2026 Midterms.",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/speed-insights": "^1.1.0"
+  }
+}
