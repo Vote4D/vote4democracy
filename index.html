@@ -18,12 +18,6 @@
 <link rel="apple-touch-icon" href="/assets/icon-192.png"/>
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png"/>
 <!-- ══════════════════════════════════════════════════════════ -->
-<!-- ══ VERCEL SPEED INSIGHTS ═════════════════════════════════ -->
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-<!-- ══════════════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -1091,7 +1085,7 @@ footer{
 <script>
 // ── Supabase Config ──────────────────────────────────
 const SUPABASE_URL = 'https://iqyhuabyjatzakxnkyod.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_AVvBVeczf2IogRUiSkJGYA_1xsZodHF';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlxeWh1YWJ5amF0emFreG5reW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQwNTUzMjcsImV4cCI6MjA5OTYzMTMyN30.-SWNACkre1Buf-wZkXJqM8WYSNJtK9eVmTUxQCRvVjk';
 const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ── Party Filter ─────────────────────────────────────
@@ -1111,10 +1105,7 @@ async function findRep(){
   if(!z){return;}
   // Log to Supabase
   try { await _supabase.from('zip_lookups').insert([{zip_code:z}]); } catch(e){}
-  alert('Finding representatives for ZIP: '+z+'
-
-Live lookup powered by Congress.gov API.
-Try: 30303 (Atlanta) · 77001 (Houston) · 10001 (NYC)');
+  alert('Finding representatives for ZIP: ' + z + '\n\nLive lookup powered by Congress.gov API.\nTry: 30303 (Atlanta) · 77001 (Houston) · 10001 (NYC)');
 }
 
 // ── Newsletter Signup (Supabase) ──────────────────────
@@ -1125,18 +1116,16 @@ async function nlSub(){
     var result = await _supabase.from('newsletter_subscribers').insert([{email:e}]);
     if(result.error){
       if(result.error.code==='23505'){
-        alert('You're already subscribed! 🗳️');
+        alert("You're already subscribed! 🗳️");
       } else {
         alert('Something went wrong. Please try again.');
       }
     } else {
-      alert('You're on the list! 🇺🇸
-
-First digest before the November 2026 midterms.');
+      alert("You're on the list! 🇺🇸\n\nFirst digest before the November 2026 midterms.");
       document.getElementById('nlEmail').value='';
     }
   } catch(err){
-    alert('You're on the list! 🇺🇸');
+    alert("You're on the list! 🇺🇸");
     document.getElementById('nlEmail').value='';
   }
 }
