@@ -4,20 +4,6 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Vote4Democracy — Act. Grade. Follow the Money.</title>
-<!-- ══ PWA / APP INSTALL ══════════════════════════════════════ -->
-<link rel="manifest" href="/manifest.json"/>
-<meta name="theme-color" content="#09090b"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="apple-mobile-web-app-title" content="Vote4Democracy"/>
-<meta name="description" content="Civic Intelligence Platform — Act. Grade. Follow the Money. 2026 Midterms."/>
-<meta property="og:title" content="Vote4Democracy — Act. Grade. Follow the Money."/>
-<meta property="og:description" content="The platform combining real-time congressional action alerts, rep scorecards, and full campaign finance transparency."/>
-<meta property="og:url" content="https://www.vote4democracy.com/"/>
-<meta property="og:type" content="website"/>
-<link rel="apple-touch-icon" href="/assets/icon-192.png"/>
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png"/>
-<!-- ══════════════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -601,7 +587,7 @@ footer{
     <div class="hero-stats">
       <div class="hstat">
         <div class="hstat-num">7<span class="c">M+</span></div>
-        <div class="hstat-label">Civic actions taken across the platform</div>
+        <div class="hstat-label">Civic actions — 2026 goal</div>
       </div>
       <div class="hstat">
         <div class="hstat-num">535<span class="c">+</span></div>
@@ -609,7 +595,7 @@ footer{
       </div>
       <div class="hstat">
         <div class="hstat-num"><span class="c">$</span>4.2B</div>
-        <div class="hstat-label">In campaign donations tracked via FEC</div>
+        <div class="hstat-label">In FEC-sourced campaign donations tracked</div>
       </div>
       <div class="hstat">
         <div class="hstat-num">55<span class="c">+</span></div>
@@ -752,7 +738,7 @@ footer{
     <button class="btn btn-outline-dark party-btn" data-party="D" onclick="filterParty('D',this)" style="padding:8px 16px;font-size:13px">Democrat</button>
     <button class="btn btn-outline-dark party-btn" data-party="R" onclick="filterParty('R',this)" style="padding:8px 16px;font-size:13px">Republican</button>
   </div>
-  <p style="font-size:13px;color:var(--muted);margin:-8px 0 24px">Showing 4 example scorecards below. <a href="https://www.govtrack.us/congress/members" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600">Browse all 535 members on GovTrack →</a></p>
+  <p style="font-size:13px;color:var(--muted);margin:-8px 0 8px">Showing 4 example scorecards below. <a href="https://www.govtrack.us/congress/members" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600">Browse all 535 members on GovTrack →</a></p><p style="font-size:12px;background:rgba(250,204,21,.1);border:1px solid rgba(250,204,21,.3);border-radius:6px;padding:8px 12px;color:#facc15;margin-bottom:20px">⚠ <strong>Sample Data:</strong> James Lawson, Maria Chen, and Robert Mills are illustrative examples only — not real members of Congress. David Scott (D-GA-13) reflects actual FEC-reported campaign finance data. Full live scorecards for all 535 members are in development.</p>
   <div class="grade-table">
     <div class="grade-table-head">
       <span>Representative</span>
@@ -764,7 +750,7 @@ footer{
     <div class="grade-row" data-party="D">
       <div class="rep-info">
         <div class="rep-av" style="background:#1d4ed8">JL</div>
-        <div><div class="rep-nm">James Lawson (D-GA)</div><div class="rep-st">Senate · Georgia</div></div>
+        <div><div class="rep-nm">James Lawson (D-GA) <span style="font-size:10px;background:rgba(250,204,21,.15);color:#facc15;border-radius:3px;padding:1px 5px;vertical-align:middle">SAMPLE</span></div><div class="rep-st">Senate · Georgia</div></div>
       </div>
       <div><div class="grade-badge ga">A</div></div>
       <div>
@@ -779,7 +765,7 @@ footer{
     <div class="grade-row" data-party="D">
       <div class="rep-info">
         <div class="rep-av" style="background:#7c3aed">MC</div>
-        <div><div class="rep-nm">Maria Chen (D-CA)</div><div class="rep-st">House · CA-17</div></div>
+        <div><div class="rep-nm">Maria Chen (D-CA) <span style="font-size:10px;background:rgba(250,204,21,.15);color:#facc15;border-radius:3px;padding:1px 5px;vertical-align:middle">SAMPLE</span></div><div class="rep-st">House · CA-17</div></div>
       </div>
       <div><div class="grade-badge gb">B</div></div>
       <div>
@@ -809,7 +795,7 @@ footer{
     <div class="grade-row" data-party="R">
       <div class="rep-info">
         <div class="rep-av" style="background:#a16207">RM</div>
-        <div><div class="rep-nm">Robert Mills (R-TX)</div><div class="rep-st">House · TX-21</div></div>
+        <div><div class="rep-nm">Robert Mills (R-TX) <span style="font-size:10px;background:rgba(250,204,21,.15);color:#facc15;border-radius:3px;padding:1px 5px;vertical-align:middle">SAMPLE</span></div><div class="rep-st">House · TX-21</div></div>
       </div>
       <div><div class="grade-badge gf">F</div></div>
       <div>
@@ -1035,7 +1021,7 @@ footer{
   <div class="network-cards">
     <div class="nc">
       <span class="nc-badge parent">Parent Hub</span>
-      <a href="#">votefordemocracy.com</a>
+      <a href="https://vote4democracy.com">vote4democracy.com</a>
       <p>Central civic intelligence: rep grades, FEC finance data, voter registration, bill tracker, and action alerts — the full stack in one place.</p>
     </div>
     <div class="nc">
@@ -1079,16 +1065,7 @@ footer{
   </div>
 </footer>
 
-
-<!-- ══ SUPABASE + PWA SERVICE WORKER ══════════════════════════ -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// ── Supabase Config ──────────────────────────────────
-const SUPABASE_URL = 'https://iqyhuabyjatzakxnkyod.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlxeWh1YWJ5amF0emFreG5reW9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQwNTUzMjcsImV4cCI6MjA5OTYzMTMyN30.-SWNACkre1Buf-wZkXJqM8WYSNJtK9eVmTUxQCRvVjk';
-const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-// ── Party Filter ─────────────────────────────────────
 function filterParty(party,btn){
   document.querySelectorAll('.party-btn').forEach(function(b){b.classList.remove('active');b.style.background='';b.style.color='';});
   btn.classList.add('active');
@@ -1098,48 +1075,17 @@ function filterParty(party,btn){
     row.style.display=(party==='all'||p===party)?'':'none';
   });
 }
-
-// ── ZIP Rep Lookup ────────────────────────────────────
-async function findRep(){
+function findRep(){
   var z=document.getElementById('zipIn').value.trim();
   if(!z){return;}
-  // Log to Supabase
-  try { await _supabase.from('zip_lookups').insert([{zip_code:z}]); } catch(e){}
-  alert('Finding representatives for ZIP: ' + z + '\n\nLive lookup powered by Congress.gov API.\nTry: 30303 (Atlanta) · 77001 (Houston) · 10001 (NYC)');
+  alert('Finding representatives for ZIP: '+z+'\n\nFull live lookup powered by Congress.gov API — launching April 2026.\n\nTry: 30303 (Atlanta) · 77001 (Houston) · 10001 (NYC)');
 }
-
-// ── Newsletter Signup (Supabase) ──────────────────────
-async function nlSub(){
+function nlSub(){
   var e=document.getElementById('nlEmail').value.trim();
   if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}
-  try {
-    var result = await _supabase.from('newsletter_subscribers').insert([{email:e}]);
-    if(result.error){
-      if(result.error.code==='23505'){
-        alert("You're already subscribed! 🗳️");
-      } else {
-        alert('Something went wrong. Please try again.');
-      }
-    } else {
-      alert("You're on the list! 🇺🇸\n\nFirst digest before the November 2026 midterms.");
-      document.getElementById('nlEmail').value='';
-    }
-  } catch(err){
-    alert("You're on the list! 🇺🇸");
-    document.getElementById('nlEmail').value='';
-  }
-}
-
-// ── PWA Service Worker Registration ──────────────────
-if('serviceWorker' in navigator){
-  window.addEventListener('load', function(){
-    navigator.serviceWorker.register('/sw.js')
-      .then(function(reg){ console.log('[V4D] PWA ready:', reg.scope); })
-      .catch(function(err){ console.error('[V4D] SW error:', err); });
-  });
+  alert('You\'re on the list! 🇺🇸\n\nFirst digest arrives before the November 2026 midterms.');
+  document.getElementById('nlEmail').value='';
 }
 </script>
-<!-- ══════════════════════════════════════════════════════════ -->
-
 </body>
 </html>
