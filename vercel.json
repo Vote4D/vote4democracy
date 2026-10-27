@@ -1,5 +1,10 @@
 {
-	"rewrites": [
-		{ "source": "/", "destination": "/vote4democracy" }
-	]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/((?!assets/|manifest.json|sw.js|_vercel/).*)",
+      "destination": "/index.html"
+    }
+  ]
 }
